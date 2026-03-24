@@ -5,6 +5,8 @@ set(CMAKE_SYSTEM_NAME Windows)
 set(CMAKE_SYSTEM_PROCESSOR X86)
 
 # ── Compilers ────────────────────────────────────────────────────────────────
+# Must search host PATH, not the cross-compilation sysroot.
+set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 # Try unversioned names first (Arch/local), fall back to versioned (Ubuntu CI)
 find_program(CMAKE_C_COMPILER   NAMES clang-cl   clang-cl-19   REQUIRED)
 find_program(CMAKE_CXX_COMPILER NAMES clang-cl   clang-cl-19   REQUIRED)
@@ -58,7 +60,6 @@ link_directories(
 # This sets /MD (MultiThreadedDLL) for all configs, avoiding msvcrtd.lib
 set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreadedDLL")
 
-set(CMAKE_FIND_ROOT_PATH_MODE_PROGRAM NEVER)
 set(CMAKE_FIND_ROOT_PATH_MODE_LIBRARY ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_INCLUDE ONLY)
 set(CMAKE_FIND_ROOT_PATH_MODE_PACKAGE ONLY)
