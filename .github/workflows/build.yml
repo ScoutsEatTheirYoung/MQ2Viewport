@@ -25,6 +25,9 @@ jobs:
           # clang-cl is clang with MSVC-compat mode; clang-19 pkg omits it
           sudo ln -sf /usr/bin/clang-19    /usr/local/bin/clang-cl
           sudo ln -sf /usr/bin/lld-link-19 /usr/local/bin/lld-link
+          # LLVM replacements for Windows rc/mt so cmake's vs_link_exe works
+          sudo ln -sf /usr/bin/llvm-rc-19  /usr/local/bin/rc
+          sudo ln -sf /usr/bin/llvm-mt-19  /usr/local/bin/mt
           # Unversioned symlinks for tools called by name in build scripts
           for tool in llvm-dlltool llvm-ar llvm-nm llvm-lib; do
             sudo ln -sf /usr/bin/${tool}-19 /usr/local/bin/${tool}
