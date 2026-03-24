@@ -38,7 +38,7 @@ jobs:
         if: steps.cache-xwin.outputs.cache-hit != 'true'
         run: |
           cargo install xwin
-          xwin --accept-license --arch x86 --http-retries 5 splat --output ~/.xwin-cache/splat
+          xwin --accept-license --arch x86 --http-retry 5 splat --output ~/.xwin-cache/splat
 
       - name: Clone MacroQuest EMU branch
         run: |
