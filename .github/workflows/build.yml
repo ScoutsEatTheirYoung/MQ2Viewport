@@ -37,8 +37,7 @@ jobs:
           restore-keys: xwin-x86-
 
       - name: Install xwin
-        if: hashFiles('~/.cargo/bin/xwin') == ''
-        run: cargo install xwin
+        run: command -v xwin || cargo install xwin
 
       - name: Fetch Windows SDK
         id: xwin-fetch
