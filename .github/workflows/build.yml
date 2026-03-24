@@ -118,6 +118,15 @@ jobs:
           sed -i 's/m_rep->m_strongRefs : 0/m_rep->m_strongRefs.load() : 0/' \
             build/patches/eqlib/game/SoeUtil.h
 
+      - name: Diagnose tool paths
+        run: |
+          echo "=== PATH ===" && echo $PATH
+          echo "=== clang-cl ===" && which clang-cl 2>&1 || true
+          echo "=== clang-cl-19 ===" && which clang-cl-19 2>&1 || true
+          echo "=== lld-link-19 ===" && which lld-link-19 2>&1 || true
+          echo "=== ninja ===" && which ninja 2>&1 || true
+          echo "=== /usr/bin/clang* ===" && ls /usr/bin/clang* 2>&1 || true
+
       - name: Configure
         run: |
           cmake -B build/cmake -G Ninja \
