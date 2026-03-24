@@ -33,7 +33,7 @@ jobs:
           path: |
             ~/.xwin-cache
             ~/.cargo/bin/xwin
-          key: xwin-x86-v2
+          key: xwin-x86-v3
 
       - name: Install xwin and fetch Windows SDK
         if: steps.cache-xwin.outputs.cache-hit != 'true'
