@@ -30,6 +30,8 @@ Prints all values to chat.
 | `${Camera.ScreenH}` | float | Render buffer height in pixels |
 | `${Camera}` | string | `X=... Y=... Z=... H=... P=... FOV=...` |
 
+> **Precision note:** All values are 32-bit floats (~7 significant digits). Position is formatted to 4 decimal places and angles to 2 — requesting more via string formatting will return floating-point noise, not real data.
+
 ### World-to-Screen Projection
 
 Index format is `worldX,worldY,worldZ` (in-game coordinates).
