@@ -17,11 +17,11 @@ jobs:
           sudo apt-get update -qq
           sudo apt-get install -y cmake ninja-build clang lld llvm \
             libspdlog-dev libfmt-dev libglm-dev
-          # Ensure unversioned symlinks exist (ubuntu-latest uses LLVM 14)
-          for tool in llvm-dlltool llvm-ar llvm-nm llvm-lib; do
+          # Ensure unversioned symlinks exist for all LLVM/clang tools
+          for tool in clang-cl lld-link llvm-dlltool llvm-ar llvm-nm llvm-lib; do
             if ! command -v $tool &>/dev/null; then
-              ver=$(ls /usr/bin/${tool}-* 2>/dev/null | head -1 | grep -oP '\d+$')
-              sudo ln -sf /usr/bin/${tool}-${ver} /usr/local/bin/${tool}
+              src=$(ls /usr/bin/${tool}-* 2>/dev/null | sort -V | tail -1)
+              [ -n "$src" ] && sudo ln -sf "$src" /usr/local/bin/${tool}
             fi
           done
 
