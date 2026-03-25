@@ -1,4 +1,4 @@
-# Building MQ2Camera on Arch Linux
+# Building MQ2Viewport on Arch Linux
 
 This is a Windows DLL compiled entirely on Linux via cross-compilation using the LLVM toolchain. No Windows machine or Wine required.
 
@@ -99,10 +99,10 @@ sed -i 's/m_rep->m_strongRefs : 0/m_rep->m_strongRefs.load() : 0/' \
 cmake -B build/cmake -G Ninja \
     -DCMAKE_TOOLCHAIN_FILE=toolchain-win32-clang.cmake \
     -DCMAKE_BUILD_TYPE=Release
-cmake --build build/cmake --target MQ2Camera
+cmake --build build/cmake --target MQ2Viewport
 ```
 
-Output: `build/cmake/bin/MQ2Camera.dll`
+Output: `build/cmake/bin/MQ2Viewport.dll`
 
 ---
 
@@ -144,7 +144,7 @@ MQ headers pull in libs via `#pragma comment(lib, ...)`. Create empty stubs with
 
 | File | Purpose |
 |------|---------|
-| `MQ2Camera.cpp` | Plugin source |
+| `MQ2Viewport.cpp` | Plugin source |
 | `CMakeLists.txt` | Standalone cross-compilation build |
 | `toolchain-win32-clang.cmake` | clang-cl + lld-link targeting i686 Windows MSVC ABI |
 | `MQ2Main.def` | Export definitions for MQ2Main.dll stub |

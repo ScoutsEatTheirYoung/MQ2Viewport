@@ -136,10 +136,10 @@ jobs:
             -DCMAKE_BUILD_TYPE=Release
 
       - name: Build
-        run: cmake --build build/cmake --target MQ2Camera
+        run: cmake --build build/cmake --target MQ2Viewport
 
       - name: Verify output
-        run: file build/cmake/bin/MQ2Camera.dll
+        run: file build/cmake/bin/MQ2Viewport.dll
 
       - name: Create or update rolling release
         uses: softprops/action-gh-release@v2
@@ -150,4 +150,4 @@ jobs:
           body: |
             Automated build from commit ${{ github.sha }}
             ${{ github.event.head_commit.message }}
-          files: build/cmake/bin/MQ2Camera.dll
+          files: build/cmake/bin/MQ2Viewport.dll
